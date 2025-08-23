@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Символы-мнемоники (или HTML-сущности) в HTML</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Vollkorn&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="index.html"> Конспект «Структура HTML-документа»</a>
+                <a href="textmarkup.html">Разметка текста</a>
+            </nav>
+        </header>
+        <h1>Символы-мнемоники (или HTML-сущности) в HTML</h1>
+        <p>Символы-мнемоники (или HTML-сущности) в HTML — это специальные коды, используемые для отображения символов, которые либо невозможно ввести напрямую, либо они зарезервированы для синтаксиса HTML. Вот основные категории и примеры:</p>
+        <section>
+            <h2>1. Символы, зарезервированные в HTML</h2>
+            <ul>
+                <li><code>&amp;lt;</code> (<) — знак «меньше» (чтобы не смешивать с открытием тега).</li>
+                <li><code>&amp;gt;</code> (>) — знак «больше»</li>
+                <li><code>&amp;amp;</code> (&) — знак «и» или «амперсанд»</li>
+                <li><code>&amp;quot;</code> (") — двойная кавычка (например, внутри атрибутов).</li>
+                <li><code>&amp;apos;</code> (') — одинарная кавычка (редко используется, так как в HTML атрибуты обычно с ").</li>
+            </ul>
+            <h2>2. Специальные символы</h2>
+            <ul>
+                <li><code>&amp;nbsp;</code> — неразрывный пробел (препятствует переносу строки).</li>
+                <li><code>&amp;copy;</code> (©) — знак копирайта (авторского права).</li>
+                <li><code>&amp;reg;</code> (®)  — знак зарегистрированной торговой марки.</li>
+                <li><code>&amp;trade;</code> «TM»  — знак торговой марки.</li>
+                <li><code>&amp;euro;</code> (€) — знак евро.</li>
+                <li><code>&amp;pound;</code> (£) — знак фунта.</li>
+                <li><code>&amp;plusmn;</code> (±) — знак плюс-минус.</li>
+            </ul>
+            <h2>3. Математические символы</h2>
+            <ul>
+                <li><code>&amp;times;</code> (×) — знак умножения.</li>
+                <li><code>&amp;divide;</code> (÷) — знак деления.</li>
+                <li><code>&amp;sum;</code> (∑) — знак суммы.</li>
+                <li><code>&amp;radic;</code> (√) — знак квадратного корня.</li>
+                <li><code>&amp;infin;</code> (∞) — бесконечность.</li>
+            </ul>
+            <h2>4. Стрелки</h2>
+            <ul>
+                <li><code>&amp;larr;</code> (←) — стрелка влево.</li>
+                <li><code>&amp;rarr;</code> (→) — стрелка вправо.</li>
+                <li><code>&amp;uarr;</code> (↑) — стрелка вверх</li>
+                <li><code>&amp;darr;</code> (↓) — стрелка вниз</li>
+            </ul>
+            <h2>5. Диакритические знаки</h2>
+            <ul>
+                <li><code>&amp;acute;</code> (´) — акцент (используется для ударения, например, <code>&amp;eacute;</code>=<code>&eacute;</code>)</li>
+            </ul>
+            <h2>6. Греческие буквы</h2>
+            <ul>
+                <li><code>&amp;alpha;</code> (α) — буква «алфа»</li>
+                <li><code>&amp;beta;</code> (β) — буква «бета»</li>
+                <li><code>&amp;gamma;</code> (γ) — буква «гамма»</li>
+                <li><code>&amp;delta;</code> (δ) — буква «дельта»</li>
+                <li><code>&amp;Omega;</code> (Ω) — буква «омега»</li>
+            </ul>
+            <h2>Зачем использовать мнемоники?</h2>
+            <ul>
+                <li>Избежание конфликтов: Например,<code>&lt;</code> вместо <code>&amp;lt;</code> будет воспринято как начало тега.</li>
+                <li>Поддержка символов, отсутствующих на клавиатуре: например <code>&copy;</code> или <code>&euro;</code></li>
+                <li><strong>Совместимость:</strong> Гарантируют корректное отображение в разных кодировках (хотя современный UTF-8 решает многие проблемы).</li>
+            </ul>
+            <h2>Примеры в коде:</h2>
+            <pre class="code-block">&lt;p&gt;5 &amp;lt; 10 &amp;amp; 10 &amp;gt; 5&lt;/p&gt; &lt;!-- Отобразится: "5 &lt; 10 &amp; 10 &gt; 5" --&gt;<br />
+&lt;p&gt;Цена: 10 &amp;euro;&lt;/p&gt; &lt;!-- Символ евро --&gt;<br />
+&lt;p&gt;Формула: E = m &amp;times; c&amp;sup2;&lt;/p&gt; &lt;!-- Умножение и степень --&gt;</pre>
+            <h2>Полные списки</h2>
+            <p>Существуют сотни мнемоник. Полный список можно найти в официальной документации, например, на <a href="https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references" target="_blank">W3C</a> или <a href="https://html.spec.whatwg.org/multipage/named-characters.html" target="_blank">справочниках</a>.</p>
+            <p> Современные браузеры и UTF-8 позволяют часто использовать символы напрямую (например,<code>©</code> вместо <code>&amp;copy;</code>), но мнемоники остаются полезными для резервированных символов (<code>&lt;</code>, <code>&gt;</code>,<code>&amp;</code>). </p>
+        </section>
+    </body>
+</html>
