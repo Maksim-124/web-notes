@@ -78,5 +78,16 @@
             <p>Существуют сотни мнемоник. Полный список можно найти в официальной документации, например, на <a href="https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references" target="_blank">W3C</a> или <a href="https://html.spec.whatwg.org/multipage/named-characters.html" target="_blank">справочниках</a>.</p>
             <p> Современные браузеры и UTF-8 позволяют часто использовать символы напрямую (например,<code>©</code> вместо <code>&amp;copy;</code>), но мнемоники остаются полезными для резервированных символов (<code>&lt;</code>, <code>&gt;</code>,<code>&amp;</code>). </p>
         </section>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const codeBlocks = document.querySelectorAll(".code-block");
+            const htmlTagRegex = /(&lt;\/?[a-zA-Z0-9\-]+(?:\s+[^&lt;&gt;]*)?&gt;)/g;
+            codeBlocks.forEach(codeBlock => {
+                let html = codeBlock.innerHTML;
+                html = html.replace(htmlTagRegex, '<span class="html-tag">$1</span>');
+                codeBlock.innerHTML = html;
+            });
+        });
+    </script>
     </body>
 </html>

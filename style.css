@@ -1,5 +1,5 @@
 body {
-    font-family: 'Vollkorn', serif;
+    font-family: Verdana, sans-serif;
     line-height: 1.7;
     color: #ebebeb;
     width: 75%;
@@ -9,12 +9,7 @@ body {
     background-color: #292a2d
 }
 
-h1 h2 {
-    font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-}
-
 h3 {
-    font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 400;
 }
 .code-block {
@@ -24,21 +19,26 @@ h3 {
             border-radius: 8px;
             margin: 20px 0;
             overflow-x: auto;
-            font-family: 'Source Code Pro', monospace;
             font-size: 0.95rem;
             line-height: 1.5;
         }
+
+.code-block code {
+    background: transparent; /* Убираем фон */
+    padding: 0; /* Сбрасываем padding */
+    border-radius: 0; /* Сбрасываем скругление */
+    color: inherit; /* Наследуем цвет текста от родителя */
+}
 
 code {
     word-break: break-word;
     word-wrap: break-word;
     padding: 1px 4px 2px;
-    font-family: 'Source Code Pro', monospace;
     font-size: inherit;
     line-height: 1.35em;
     border-radius: 4px;
-    background: #424242;
-    color: rgb(209, 241, 120);
+    color: #569cd6;             
+    background: #3a3b3f;
 }
 
 a {
@@ -88,5 +88,17 @@ a:hover {
 }
 
 .section-in-windowBlock {
-    padding-left: 15px;
+    padding: 1em 1em 1em 2em;
+}
+
+.html-tag {
+            color: #569cd6; /* Синий цвет для тегов */
+}
+
+.html-attr {
+    color: #9cdcfe; /* Голубой цвет для атрибутов */
+}
+
+.html-value {
+    color: #ce9178; /* Коричневый цвет для значений */
 }

@@ -55,6 +55,16 @@
 &lt;h3&gt;Подзаголовок&lt;/h3&gt;</pre>
         <p>Основную структуру текста создают с помощью заголовков, а более мелкую выстраивают с помощью параграфов (или абзацев). Для разметки параграфов предназначен тег <code>&lt;p&gt;</code>. По умолчанию абзацы начинаются с новой строки и отделяются от остального контента отступами сверху и снизу.
         
-        
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const codeBlocks = document.querySelectorAll(".code-block");
+            const htmlTagRegex = /(&lt;\/?[a-zA-Z0-9\-]+(?:\s+[^&lt;&gt;]*)?&gt;)/g;
+            codeBlocks.forEach(codeBlock => {
+                let html = codeBlock.innerHTML;
+                html = html.replace(htmlTagRegex, '<span class="html-tag">$1</span>');
+                codeBlock.innerHTML = html;
+            });
+        });
+    </script>   
 </body>
 </html>
