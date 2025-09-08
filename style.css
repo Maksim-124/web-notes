@@ -9,8 +9,8 @@ body {
     background-color: #292a2d
 }
 
-h3 {
-    font-weight: 400;
+h3, h2, h1 {
+    font-weight: 600;
 }
 .code-block {
             background: #212327;
@@ -49,6 +49,10 @@ a {
 
 a:hover {
     color: #008ac5;
+}
+
+nav a {
+    margin: 5px;
 }
 
 .window-block {
@@ -101,4 +105,38 @@ a:hover {
 
 .html-value {
     color: #ce9178; /* Коричневый цвет для значений */
+}
+.css-property {
+    color: #9cdcfe; /* Голубой цвет для свойств */
+}
+
+.css-value {
+    color: #ce9178; /* Коричневый цвет для значений */
+}
+
+ol {
+    margin-left: 2em;
+    line-height: 1.7;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+a[href="#"] {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 20px;
+    font-weight: bold;
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+a[href="#"]:hover {
+    background-color: #2f302b;
+}
+
+.helpful_links {
+    margin: 0;
+    padding: 0;
 }
