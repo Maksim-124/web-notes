@@ -7,7 +7,8 @@ class Navbar extends HTMLElement {
             <a href="textmarkup.html">Разметка текста</a>
             <a href="linksandimages.html">Ссылки и изображения</a>
             <a href="css.html">Конспект: основы CSS</a>
-            <a href="css.html">Конспект «Оформление текста»</a>
+            <a href="text-formatting.html">Конспект «Оформление текста»</a>
+            <a href="selectors.html">Селекторы</a>
         </nav>
         <aside class="helpful_links">
             <ul>
