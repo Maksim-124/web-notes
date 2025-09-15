@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Конспект «Блочная модель документа»</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Vollkorn&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+        <style>
+            .box-model-visualization {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 40px 0;
+                background: #212327;
+                border-radius: 8px;
+                margin: 20px 0;
+            }
+            
+            .box-model {
+                position: relative;
+                width: 400px;
+                height: 300px;
+            }
+            
+            .margin-box {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 2px dashed #4caf50;
+                background: rgba(76, 175, 80, 0.1);
+            }
+            
+            .border-box {
+                position: absolute;
+                top: 40px;
+                left: 40px;
+                width: calc(100% - 80px);
+                height: calc(100% - 80px);
+                border: 2px solid #ff9800;
+                background: rgba(255, 152, 0, 0.1);
+            }
+            
+            .padding-box {
+                position: absolute;
+                top: 70px;
+                left: 70px;
+                width: calc(100% - 140px);
+                height: calc(100% - 140px);
+                border: 2px dashed #2196f3;
+                background: rgba(33, 150, 243, 0.1);
+            }
+            
+            .content-box {
+                position: absolute;
+                top: 100px;
+                left: 100px;
+                width: calc(100% - 200px);
+                height: calc(100% - 200px);
+                border: 1px solid #9c27b0;
+                background: rgba(156, 39, 176, 0.1);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+                color: #9c27b0;
+            }
+            
+            .box-label {
+                position: absolute;
+                font-family: 'Source Code Pro', monospace;
+                font-size: 12px;
+                background: white;
+                padding: 2px 6px;
+                border-radius: 3px;
+                border: 1px solid #ccc;
+            }
+            
+            .margin-label {
+                top: -25px;
+                left: 10px;
+                color: #4caf50;
+            }
+            
+            .border-label {
+                top: 15px;
+                left: 10px;
+                color: #ff9800;
+            }
+            
+            .padding-label {
+                top: 45px;
+                left: 10px;
+                color: #2196f3;
+            }
+            
+            .content-label {
+                top: 75px;
+                left: 10px;
+                color: #9c27b0;
+            }
+            
+            .dimension-line {
+                position: absolute;
+                background: #666;
+                font-family: 'Source Code Pro', monospace;
+                font-size: 11px;
+                color: #333;
+            }
+            
+            .horizontal-line {
+                height: 1px;
+                background: linear-gradient(90deg, transparent 0%, #666 20%, #666 80%, transparent 100%);
+            }
+            
+            .vertical-line {
+                width: 1px;
+                background: linear-gradient(180deg, transparent 0%, #666 20%, #666 80%, transparent 100%);
+            }
+            
+            .dimension-text {
+                position: absolute;
+                background: #3a3b3f;
+                padding: 2px 4px;
+                border-radius: 3px;
+                border: 1px solid #ddd;
+                font-size: 10px;
+            }
+            
+            .box-model:hover .margin-box {
+                background: rgba(76, 175, 80, 0.2);
+            }
+            
+            .box-model:hover .border-box {
+                background: rgba(255, 152, 0, 0.2);
+            }
+            
+            .box-model:hover .padding-box {
+                background: rgba(33, 150, 243, 0.2);
+            }
+            
+            .box-model:hover .content-box {
+                background: rgba(156, 39, 176, 0.2);
+            }
+            
+            .values-display {
+                margin-top: 20px;
+                padding: 15px;
+                background: #212327;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                font-family: 'Source Code Pro', monospace;
+                font-size: 14px;
+            }
+            
+            .value-item {
+                margin: 5px 0;
+                padding: 3px 0;
+            }
+            
+            .value-margin { color: #4caf50; }
+            .value-border { color: #ff9800; }
+            .value-padding { color: #2196f3; }
+            .value-content { color: #9c27b0; }
+        </style>
+    </head>
+<body>
+        <header>
+            <nav-bar></nav-bar>
+        </header>
+    <main>
+        <h1>Конспект «Блочная модель документа»</h1>
+        
+        <h2>Основы блочной модели</h2>
+        <p>Блочная модель документа (Box Model) — это фундаментальная концепция CSS, которая описывает, как браузер располагает и отображает элементы на странице. Каждый элемент представляется в виде прямоугольного блока.</p>
+        
+        <h3>Компоненты блочной модели</h3>
+        <p>Блочная модель состоит из четырех основных компонентов:</p>
+        <ul class="тире-list">
+            <li><strong>Контент (Content)</strong> — основное содержимое элемента</li>
+            <li><strong>Внутренние отступы (Padding)</strong> — пространство между контентом и границей</li>
+            <li><strong>Граница (Border)</strong> — линия вокруг элемента</li>
+            <li><strong>Внешние отступы (Margin)</strong> — пространство между элементами</li>
+        </ul>
+        
+        <pre class="code-block">
+.element {
+  width: 200px;          /* Ширина контента */
+  height: 100px;         /* Высота контента */
+  padding: 30px;         /* Внутренние отступы */
+  border: 5px solid #333; /* Граница */
+  margin: 40px;          /* Внешние отступы */
+}</pre>
+
+        <div class="window-block">
+            <header class="window-header">
+                📐 Визуализация блочной модели (как в DevTools)
+                <div class="window-icon">
+                    <span class="span_winow_icon">_</span>
+                    <span class="span_winow_icon">□</span>
+                    <span class="span_winow_icon">×</span> 
+                </div>
+            </header>
+            <section class="section-in-windowBlock">
+                <div class="box-model-visualization">
+                    <div class="box-model">
+                        <div class="margin-box">
+                            <div class="box-label margin-label">margin: 40px</div>
+                        </div>
+                        
+                        <div class="border-box">
+                            <div class="box-label border-label">border: 5px</div>
+                        </div>
+                        
+                        <div class="padding-box">
+                            <div class="box-label padding-label">padding: 30px</div>
+                        </div>
+                        
+                        <div class="content-box">
+                            <div class="box-label content-label">content: 200×100px</div>
+                            Content
+                        </div>
+                        
+                        <div class="dimension-line horizontal-line" style="top: 20px; left: 0; width: 40px;"></div>
+                        <div class="dimension-text" style="top: 15px; left: 15px;">40px</div>
+                        
+                        <div class="dimension-line horizontal-line" style="top: 20px; right: 0; width: 40px;"></div>
+                        <div class="dimension-text" style="top: 15px; right: 15px;">40px</div>
+                        
+                        <div class="dimension-line vertical-line" style="top: 0; left: 20px; height: 40px;"></div>
+                        <div class="dimension-text" style="top: 15px; left: 25px;">40px</div>
+                        
+                        <div class="dimension-line vertical-line" style="bottom: 0; left: 20px; height: 40px;"></div>
+                        <div class="dimension-text" style="bottom: 15px; left: 25px;">40px</div>
+                    </div>
+                </div>
+                
+                <div class="values-display">
+                    <div class="value-item value-margin">margin: 40px</div>
+                    <div class="value-item value-border">border: 5px solid #333</div>
+                    <div class="value-item value-padding">padding: 30px</div>
+                    <div class="value-item value-content">content: 200px × 100px</div>
+                    <div class="value-item" style="color: #666; font-weight: bold;">
+                        Total size: 350px × 250px (width + padding + border + margin)
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <h2>Типы элементов</h2>
+        
+        <h3>Блочные элементы</h3>
+        <p>Блочные элементы занимают всю доступную ширину и начинаются с новой строки. Примеры: <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>, <code>&lt;section&gt;</code>.</p>
+        
+        <pre class="code-block">
+div {
+  display: block; /* Значение по умолчанию */
+  width: 100%;    /* Занимает всю ширину */
+}</pre>
+
+        <h3>Строчные элементы</h3>
+        <p>Строчные элементы занимают только необходимое пространство и не начинают новую строку. Примеры: <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>.</p>
+        
+        <pre class="code-block">
+span {
+  display: inline; /* Значение по умолчанию */
+  /* width и height не работают */
+}</pre>
+
+        <h3>Inline-block элементы</h3>
+        <p>Элементы со значением <code>inline-block</code> ведут себя как строчные, но могут иметь ширину, высоту и отступы.</p>
+        
+        <pre class="code-block">
+.button {
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  padding: 10px;
+}</pre>
+
+        <h2>Свойство box-sizing</h2>
+        <p>Свойство <code>box-sizing</code> определяет, как рассчитываются ширина и высота элемента.</p>
+        
+        <h3>content-box (по умолчанию)</h3>
+        <p>Ширина и высота включают только контент. Padding и border добавляются к общим размерам.</p>
+        
+        <pre class="code-block">
+.element {
+  box-sizing: content-box;
+  width: 300px;
+  padding: 20px;
+  border: 5px solid black;
+  /* Фактическая ширина: 300 + 40 + 10 = 350px */
+}</pre>
+
+        <h3>border-box</h3>
+        <p>Ширина и высота включают контент, padding и border. Более предсказуемое поведение.</p>
+        
+        <pre class="code-block">
+.element {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 20px;
+  border: 5px solid black;
+  /* Фактическая ширина: 300px (включая padding и border) */
+}</pre>
+
+        <div class="window-block">
+            <header class="window-header">
+                🔄 Сравнение box-sizing
+                <div class="window-icon">
+                    <span class="span_winow_icon">_</span>
+                    <span class="span_winow_icon">□</span>
+                    <span class="span_winow_icon">×</span> 
+                </div>
+            </header>
+            <section class="section-in-windowBlock">
+                <div style="display: flex; gap: 20px; justify-content: center;">
+                    <div style="box-sizing: content-box; width: 150px; padding: 20px; border: 5px solid #667eea; background: #e6f7ff; text-align: center;">
+                        content-box
+                        <div style="font-size: 12px; color: #666; margin-top: 5px;">Ширина: 150 + 40 + 10 = 200px</div>
+                    </div>
+                    <div style="box-sizing: border-box; width: 150px; padding: 20px; border: 5px solid #764ba2; background: #f0e6ff; text-align: center;">
+                        border-box
+                        <div style="font-size: 12px; color: #666; margin-top: 5px;">Ширина: 150px (включая всё)</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <h2>Отступы и выравнивание</h2>
+        
+        <h3>Margin collapsing</h3>
+        <p>Вертикальные внешние отступы соседних элементов схлапываются (берётся больший из двух отступов).</p>
+        
+        <pre class="code-block">
+.element1 {
+  margin-bottom: 30px;
+}
+
+.element2 {
+  margin-top: 20px;
+}
+/* Фактический отступ между элементами: 30px */</pre>
+
+        <h3>Центрирование элементов</h3>
+        <p>Для центрирования блочных элементов по горизонтали используется <code>margin: 0 auto;</code>.</p>
+        
+        <pre class="code-block">
+.container {
+  width: 80%;
+  margin: 0 auto; /* Центрирование по горизонтали */
+}</pre>
+
+        <h2>Позиционирование</h2>
+        
+        <h3>Static (по умолчанию)</h3>
+        <p>Элементы располагаются в нормальном потоке документа.</p>
+        
+        <h3>Relative</h3>
+        <p>Элемент позиционируется относительно своего нормального положения.</p>
+        
+        <pre class="code-block">
+.element {
+  position: relative;
+  top: 10px;
+  left: 20px;
+}</pre>
+
+        <h3>Absolute</h3>
+        <p>Элемент позиционируется относительно ближайшего позиционированного предка.</p>
+        
+        <pre class="code-block">
+.parent {
+  position: relative;
+}
+
+.child {
+  position: absolute;
+  top: 0;
+  right: 0;
+}</pre>
+
+        <h3>Fixed</h3>
+        <p>Элемент позиционируется относительно viewport (окна браузера).</p>
+        
+        <pre class="code-block">
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}</pre>
+
+        <h3>Sticky</h3>
+        <p>Элемент переключается между relative и fixed в зависимости от прокрутки.</p>
+        
+        <pre class="code-block">
+.navbar {
+  position: sticky;
+  top: 0;
+}</pre>
+
+        <h2>Flexbox</h2>
+        <p>Flexbox — современная модель layout для создания гибких и адаптивных макетов.</p>
+        
+        <pre class="code-block">
+.container {
+  display: flex;
+  justify-content: center; /* Выравнивание по главной оси */
+  align-items: center;     /* Выравнивание по поперечной оси */
+  gap: 20px;               /* Расстояние между элементами */
+}
+
+.item {
+  flex: 1;                /* Гибкое распределение пространства */
+}</pre>
+
+        <div class="window-block">
+            <header class="window-header">
+                🎯 Flexbox пример
+                <div class="window-icon">
+                    <span class="span_winow_icon">_</span>
+                    <span class="span_winow_icon">□</span>
+                    <span class="span_winow_icon">×</span> 
+                </div>
+            </header>
+            <section class="section-in-windowBlock">
+                <div style="display: flex; justify-content: space-around; align-items: center; height: 100px; background: #f5f5f5; padding: 20px;">
+                    <div style="background: #667eea; color: white; padding: 10px; border-radius: 5px;">Item 1</div>
+                    <div style="background: #764ba2; color: white; padding: 10px; border-radius: 5px;">Item 2</div>
+                    <div style="background: #f093fb; color: white; padding: 10px; border-radius: 5px;">Item 3</div>
+                </div>
+            </section>
+        </div>
+
+        <h2>Grid Layout</h2>
+        <p>CSS Grid — двухмерная система layout для создания сложных макетов.</p>
+        
+        <pre class="code-block">
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto;
+  gap: 20px;
+  grid-template-areas: 
+    "header header header"
+    "sidebar content ads"
+    "footer footer footer";
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.content { grid-area: content; }
+.ads { grid-area: ads; }
+.footer { grid-area: footer; }</pre>
+
+        <div class="window-block">
+            <header class="window-header">
+                🏗️ Grid пример
+                <div class="window-icon">
+                    <span class="span_winow_icon">_</span>
+                    <span class="span_winow_icon">□</span>
+                    <span class="span_winow_icon">×</span> 
+                </div>
+            </header>
+            <section class="section-in-windowBlock">
+                <div style="display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 10px; padding: 10px;">
+                    <div style="background: #ff6b6b; padding: 20px; color: white;">Header</div>
+                    <div style="background: #ff6b6b; padding: 20px; color: white;">Header</div>
+                    <div style="background: #ff6b6b; padding: 20px; color: white;">Header</div>
+                    <div style="background: #4ecdc4; padding: 40px; color: white;">Sidebar</div>
+                    <div style="background: #45b7d1; padding: 40px; color: white;">Content</div>
+                    <div style="background: #f9c74f; padding: 40px; color: white;">Ads</div>
+                </div>
+            </section>
+        </div>
+
+        <h2>Практические советы</h2>
+        
+        <h3>Reset CSS</h3>
+        <p>Использование reset CSS для обнуления стандартных стилей браузера.</p>
+        
+        <pre class="code-block">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}</pre>
+
+        <h3>Единицы измерения</h3>
+        <ul class="тире-list">
+            <li><strong>px</strong> — пиксели (фиксированный размер)</li>
+            <li><strong>%</strong> — проценты (относительно родителя)</li>
+            <li><strong>em</strong> — относительно размера шрифта родителя</li>
+            <li><strong>rem</strong> — относительно размера шрифта корневого элемента</li>
+            <li><strong>vh/vw</strong> — процент высоты/ширины viewport</li>
+        </ul>
+
+        <h3>Отладка блочной модели</h3>
+        <p>Используйте инструменты разработчика браузера для визуализации box model:</p>
+        <pre class="code-block">
+/* Временные стили для отладки */
+.debug {
+  outline: 1px solid red !important;
+  background: rgba(255, 0, 0, 0.1) !important;
+}</pre>
+
+    </main>
+     <!-- Скрипт заменяющие цвет текста внутри мнемоник родительско элемента class="code-block" на синий  -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const codeBlocks = document.querySelectorAll(".code-block");
+            const htmlTagRegex = /(&lt;\/?[a-zA-Z0-9\-]+(?:\s+[a-zA-Z\-]+=("|')[^&lt;&gt;]*("|'))*\s*&gt;)/g;
+            codeBlocks.forEach(codeBlock => {
+                let html = codeBlock.innerHTML;
+                html = html.replace(htmlTagRegex, '<span class="html-tag">$1</span>');
+                codeBlock.innerHTML = html;
+            });
+        });
+    </script>
+    <script src="nav-bar.js"></script>
+    <a href="#">Наверх</a>
+</body>
+</html>
