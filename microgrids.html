@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Конспект «Микросетки»</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Vollkorn&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <header>
+        <nav-bar></nav-bar>
+    </header>
+    <main>
+        <section>
+    <h1>Конспект «Микросетки. Начало». Раздел 1</h1>
+    <h2>Микросетки</h2>
+    <p>Микросетки — сетки мелких элементов веб-страницы.</p>
+    <p>В отличие от крупных сеток, микросетки меньше зависят от макета и больше — от содержимого. Содержимое страниц со временем может меняться. Если не учитывать этого, вёрстка сломается.</p>
+    <h2>Отступы у ссылок</h2>
+    <p>Часто ссылкам добавляют внутренние отступы, чтобы увеличить область, по которой можно кликнуть (её ещё называют активной областью). Чем проще попасть по ссылке, тем удобнее интерфейс.</p>
+    <p>По умолчанию ссылки имеют строчный тип бокса. Браузер игнорирует внешние отступы по вертикали у строчных боксов, а их внутренние отступы сверху и снизу не влияют на расположение других элементов. Самый простой способ решить эту проблему — изменить у ссылок тип бокса. Например, сделать их блочными боксами:</p>
+    <pre class="code-block">
+.element {
+  display: block;
+}
+</pre>
+    <h2>Свойство align-items</h2>
+    <p>По умолчанию грид-элементы занимают всё доступное пространство по высоте. Такое поведение можно изменить с помощью свойства align-items. Оно задаётся грид-контейнеру и управляет выравниванием грид-элементов по вертикали.</p>
+    <pre class="code-block">
+.grid-container {
+  display: grid;
+  align-items: start;
+}
+</pre>
+    <p>У align-items могут быть следующие значения:</p>
+    <ul>
+        <li><code>stretch</code> — значение по умолчанию; элементы начинаются у верхней границы и растягиваются на всю высоту.</li>
+        <li><code>start</code> — элементы выстраиваются по верхней границе и, если содержимого немного, не тянутся на всю высоту;</li>
+        <li><code>end</code> — элементы выстраиваются по нижней границе;</li>
+        <li><code>center</code> — элементы располагаются по центру;</li>
+    </ul>
+    <h2>Свойство flex-wrap</h2>
+    <p>Если элементам не хватает места, они могут вылезти за границы контейнера. Такое поведение называют выпадением элементов. Также говорят, что произошло переполнение.</p>
+    <p>По умолчанию флекс-контейнер однострочный. Чтобы элементы не выпадали из контейнера, его делают многострочным. Для этого используют свойство flex-wrap со значением wrap.</p>
+    <pre class="code-block">
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+</pre>
+        </section>
+</main>
+
+    <!-- Скрипт заменяющие цвет текста внутри мнемоник родительско элемента class="code-block" на синий  -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const codeBlocks = document.querySelectorAll(".code-block");
+            const htmlTagRegex = /(<\/?[a-zA-Z0-9\-]+(?:\s+[a-zA-Z\-]+=("|')[^<>]*("|'))*\s*>)/g;
+            codeBlocks.forEach(codeBlock => {
+                let html = codeBlock.innerHTML;
+                html = html.replace(htmlTagRegex, '<span class="html-tag">$1</span>');
+                codeBlock.innerHTML = html;
+            });
+        });
+    </script>
+    <script src="nav-bar.js"></script>
+    <a href="#">Наверх</a>
+</body>
+</html>
