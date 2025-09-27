@@ -42,6 +42,7 @@ class Navbar extends HTMLElement {
                 <li><a href="block-model.html">Блочная модель</a></li>
                 <li><a href="grid.html">Гриды</a></li>
                 <li><a href="microgrids.html">Микро-сетки</a></li>
+                <li><a href="checklist-styling-guide.html">Чек-лист по стилизации</a></li>
             </ul>
         </nav>
         <aside class="helpful_links">
